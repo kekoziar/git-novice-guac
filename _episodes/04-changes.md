@@ -19,28 +19,27 @@ keypoints:
 ---
 
 First let's make sure we're still in the right directory.
-You should be in the `planets` directory.
+You should be in the `recipes` directory.
 
 ~~~
-$ cd ~/Desktop/planets
+$ cd ~/Desktop/recipes
 ~~~
 {: .language-bash}
 
-Let's create a file called `mars.txt` that contains some notes
-about the Red Planet's suitability as a base.
+Let's create a file called `guacamole.txt` that contains the base for our recipe.
 We'll use `nano` to edit the file;
 you can use whatever editor you like.
 In particular, this does not have to be the `core.editor` you set globally earlier. But remember, the bash command to create or edit a new file will depend on the editor you choose (it might not be `nano`). For a refresher on text editors, check out ["Which Editor?"](https://swcarpentry.github.io/shell-novice/03-create/) in [The Unix Shell](https://swcarpentry.github.io/shell-novice/) lesson.
 
 ~~~
-$ nano mars.txt
+$ nano guacamole.txt
 ~~~
 {: .language-bash}
 
-Type the text below into the `mars.txt` file:
+Type the text below into the `guacamole.txt` file:
 
 ~~~
-Cold and dry, but everything is my favorite color
+Ingredients
 ~~~
 
 Let's first verify that the file was properly created by running the list command (`ls`):
@@ -52,20 +51,20 @@ $ ls
 {: .language-bash}
 
 ~~~
-mars.txt
+guacamole.txt
 ~~~
 {: .output}
 
 
-`mars.txt` contains a single line, which we can see by running:
+`guacamole.txt` contains a single line, which we can see by running:
 
 ~~~
-$ cat mars.txt
+$ cat guacamole.txt
 ~~~
 {: .language-bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
+Ingredients
 ~~~
 {: .output}
 
@@ -85,7 +84,7 @@ No commits yet
 Untracked files:
    (use "git add <file>..." to include in what will be committed)
 
-	mars.txt
+	guacamole.txt
 
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
@@ -96,7 +95,7 @@ that Git isn't keeping track of.
 We can tell Git to track a file using `git add`:
 
 ~~~
-$ git add mars.txt
+$ git add guacamole.txt
 ~~~
 {: .language-bash}
 
@@ -115,25 +114,25 @@ No commits yet
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 
-	new file:   mars.txt
+	new file:   guacamole.txt
 
 ~~~
 {: .output}
 
-Git now knows that it's supposed to keep track of `mars.txt`,
+Git now knows that it's supposed to keep track of `guacamole.txt`,
 but it hasn't recorded these changes as a commit yet.
 To get it to do that,
 we need to run one more command:
 
 ~~~
-$ git commit -m "Start notes on Mars as a base"
+$ git commit -m "Start notes on guacamole recipe"
 ~~~
 {: .language-bash}
 
 ~~~
-[master (root-commit) f22b25e] Start notes on Mars as a base
+[master (root-commit) f22b25e] Start notes on guacamole recipe
  1 file changed, 1 insertion(+)
- create mode 100644 mars.txt
+ create mode 100644 guacamole.txt
 ~~~
 {: .output}
 
@@ -177,10 +176,10 @@ $ git log
 
 ~~~
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
+Author: J. Smith <jsmith@gallifrey.io>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
-    Start notes on Mars as a base
+    Start notes on guacamole recipe
 ~~~
 {: .output}
 
@@ -195,26 +194,26 @@ and the log message Git was given when the commit was created.
 
 > ## Where Are My Changes?
 >
-> If we run `ls` at this point, we will still see just one file called `mars.txt`.
+> If we run `ls` at this point, we will still see just one file called `guacamole.txt`.
 > That's because Git saves information about files' history
 > in the special `.git` directory mentioned earlier
 > so that our filesystem doesn't become cluttered
 > (and so that we can't accidentally edit or delete an old version).
 {: .callout}
 
-Now suppose Dracula adds more information to the file.
+Now suppose Chef Smith adds more information to the file.
 (Again, we'll edit with `nano` and then `cat` the file to show its contents;
 you may use a different editor, and don't need to `cat`.)
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano guacamole.txt
+$ cat guacamole.txt
 ~~~
 {: .language-bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
+Ingredients
+Ripe avocados (how ripe?)
 ~~~
 {: .output}
 
@@ -232,7 +231,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   mars.txt
+	modified:   guacamole.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -255,13 +254,13 @@ $ git diff
 {: .language-bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
+diff --git a/guacamole.txt b/guacamole.txt
 index df0654a..315bf3a 100644
---- a/mars.txt
-+++ b/mars.txt
+--- a/guacamole.txt
++++ b/guacamole.txt
 @@ -1 +1,2 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
+ Ingredients
++Ripe avocados (how ripe?)
 ~~~
 {: .output}
 
@@ -284,7 +283,7 @@ If we break it down into pieces:
 After reviewing our change, it's time to commit it:
 
 ~~~
-$ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+$ git commit -m "Add main ingredient"
 $ git status
 ~~~
 {: .language-bash}
@@ -295,7 +294,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   mars.txt
+	modified:   guacamole.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -306,13 +305,13 @@ Git won't commit because we didn't use `git add` first.
 Let's fix that:
 
 ~~~
-$ git add mars.txt
-$ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+$ git add guacamole.txt
+$ git commit -m "Add main ingredient"
 ~~~
 {: .language-bash}
 
 ~~~
-[master 34961b1] Add concerns about effects of Mars' moons on Wolfman
+[master 34961b1] Add main ingredient
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
@@ -363,15 +362,15 @@ First,
 we'll add another line to the file:
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano guacamole.txt
+$ cat guacamole.txt
 ~~~
 {: .language-bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+Ingredients
+Ripe avocados (how ripe?)
+Lime juice
 ~~~
 {: .output}
 
@@ -381,14 +380,14 @@ $ git diff
 {: .language-bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
+diff --git a/guacamole.txt b/guacamole.txt
 index 315bf3a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
+--- a/guacamole.txt
++++ b/guacamole.txt
 @@ -1,2 +1,3 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+ Ingredients
+ Ripe avocados (how ripe?)
++Lime juice
 ~~~
 {: .output}
 
@@ -399,7 +398,7 @@ Now let's put that change in the staging area
 and see what `git diff` reports:
 
 ~~~
-$ git add mars.txt
+$ git add guacamole.txt
 $ git diff
 ~~~
 {: .language-bash}
@@ -417,14 +416,14 @@ $ git diff --staged
 {: .language-bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
+diff --git a/guacamole.txt b/guacamole.txt
 index 315bf3a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
+--- a/guacamole.txt
++++ b/guacamole.txt
 @@ -1,2 +1,3 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+ Ingredients
+ Ripe avocados (how ripe?)
++Lime juice
 ~~~
 {: .output}
 
@@ -434,12 +433,12 @@ and what's in the staging area.
 Let's save our changes:
 
 ~~~
-$ git commit -m "Discuss concerns about Mars' climate for Mummy"
+$ git commit -m "Citrus for flavor and preserving color"
 ~~~
 {: .language-bash}
 
 ~~~
-[master 005937f] Discuss concerns about Mars' climate for Mummy
+[master 005937f] Citrus for flavor and preserving color
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
@@ -466,22 +465,22 @@ $ git log
 
 ~~~
 commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
+Author: J. Smith <jsmith@gallifrey.io>
 Date:   Thu Aug 22 10:14:07 2013 -0400
 
-    Discuss concerns about Mars' climate for Mummy
+    Citrus for flavor and preserving color
 
 commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
+Author: J. Smith <jsmith@gallifrey.io>
 Date:   Thu Aug 22 10:07:21 2013 -0400
 
-    Add concerns about effects of Mars' moons on Wolfman
+    Add main ingredient
 
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
+Author: J. Smith <jsmith@gallifrey.io>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
-    Start notes on Mars as a base
+    Start notes on guacamole recipe
 ~~~
 {: .output}
 
@@ -522,10 +521,10 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >
 > ~~~
 > commit 005937fbe2a98fb83f0ade869025dc2636b4dad5
-> Author: Vlad Dracula <vlad@tran.sylvan.ia>
+> Author: J. Smith <jsmith@gallifrey.io>
 > Date:   Thu Aug 22 10:14:07 2013 -0400
 >
->    Discuss concerns about Mars' climate for Mummy
+>    Citrus for flavor and preserving color
 > ~~~
 > {: .output}
 >
@@ -537,9 +536,9 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .language-bash}
 > ~~~
-> 005937f Discuss concerns about Mars' climate for Mummy
-> 34961b1 Add concerns about effects of Mars' moons on Wolfman
-> f22b25e Start notes on Mars as a base
+> 005937f Citrus for flavor and preserving color
+> 34961b1 Add main ingredient
+> f22b25e Start notes on guacamole recipe
 > ~~~
 > {: .output}
 >
@@ -554,9 +553,9 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .language-bash}
 > ~~~
-> * 005937f (HEAD -> master) Discuss concerns about Mars' climate for Mummy
-> * 34961b1 Add concerns about effects of Mars' moons on Wolfman
-> * f22b25e Start notes on Mars as a base
+> * 005937f (HEAD -> master) Citrus for flavor and preserving color
+> * 34961b1 Add main ingredient
+> * f22b25e Start notes on guacamole recipe
 > ~~~
 > {: .output}
 {: .callout}
@@ -569,14 +568,14 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >    Try it for yourself:
 >
 >    ~~~
->    $ mkdir spaceships
+>    $ mkdir equipment
 >    $ git status
->    $ git add spaceships
+>    $ git add equipment
 >    $ git status
 >    ~~~
 >    {: .language-bash}
 >
->    Note, our newly created empty directory `spaceships` does not appear in
+>    Note, our newly created empty directory `equipment` does not appear in
 >    the list of untracked files even if we explicitly add it (_via_ `git add`) to our
 >    repository. This is the reason why you will sometimes see `.gitkeep` files
 >    in otherwise empty directories. Unlike `.gitignore`, these files are not special
@@ -594,9 +593,9 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >    Try it for yourself:
 >
 >    ~~~
->    $ touch spaceships/apollo-11 spaceships/sputnik-1
+>    $ touch equipment/modern equipment/traditional
 >    $ git status
->    $ git add spaceships
+>    $ git add equipment
 >    $ git status
 >    ~~~
 >    {: .language-bash}
@@ -604,7 +603,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >    Before moving on, we will commit these changes.
 >
 >    ~~~
->    $ git commit -m "Add some initial thoughts on spaceships"
+>    $ git commit -m "Add some initial thoughts on equipment"
 >    ~~~
 >    {: .language-bash}
 >
@@ -620,11 +619,11 @@ repository (`git commit`):
 > ## Choosing a Commit Message
 >
 > Which of the following commit messages would be most appropriate for the
-> last commit made to `mars.txt`?
+> last commit made to `guacamole.txt`?
 >
 > 1. "Changes"
-> 2. "Added line 'But the Mummy will appreciate the lack of humidity' to mars.txt"
-> 3. "Discuss effects of Mars' climate on the Mummy"
+> 2. "Added line 'Lime juice' to guacamole.txt"
+> 3. "Citrus adds flavor and preserves color"
 >
 > > ## Solution
 > > Answer 1 is not descriptive enough, and the purpose of the commit is unclear;
@@ -671,56 +670,56 @@ repository (`git commit`):
 > The staging area can hold changes from any number of files
 > that you want to commit as a single snapshot.
 >
-> 1. Add some text to `mars.txt` noting your decision
-> to consider Venus as a base
-> 2. Create a new file `venus.txt` with your initial thoughts
-> about Venus as a base for you and your friends
+> 1. Add some text to `guacamole.txt` noting your decision
+> to make homemade chips.
+> 2. Create a new file `chips.txt` with your initial thoughts
+> about homemade chips.
 > 3. Add changes from both files to the staging area,
 > and commit those changes.
 >
 > > ## Solution
 > >
-> > First we make our changes to the `mars.txt` and `venus.txt` files:
+> > First we make our changes to the `guacamole.txt` and `chips.txt` files:
 > > ~~~
-> > $ nano mars.txt
-> > $ cat mars.txt
+> > $ nano guacamole.txt
+> > $ cat guacamole.txt
 > > ~~~
 > > {: .language-bash}
 > > ~~~
-> > Maybe I should start with a base on Venus.
+> > Maybe I should make homemade chips.
 > > ~~~
 > > {: .output}
 > > ~~~
-> > $ nano venus.txt
-> > $ cat venus.txt
+> > $ nano chips.txt
+> > $ cat chips.txt
 > > ~~~
 > > {: .language-bash}
 > > ~~~
-> > Venus is a nice planet and I definitely should consider it as a base.
+> > Homemade chips are good, but time consuming to create the tortillas from scratch.
 > > ~~~
 > > {: .output}
 > > Now you can add both files to the staging area. We can do that in one line:
 > >
 > > ~~~
-> > $ git add mars.txt venus.txt
+> > $ git add guacamole.txt chips.txt
 > > ~~~
 > > {: .language-bash}
 > > Or with multiple commands:
 > > ~~~
-> > $ git add mars.txt
-> > $ git add venus.txt
+> > $ git add guacamole.txt
+> > $ git add chips.txt
 > > ~~~
 > > {: .language-bash}
 > > Now the files are ready to commit. You can check that using `git status`. If you are ready to commit use:
 > > ~~~
-> > $ git commit -m "Write plans to start a base on Venus"
+> > $ git commit -m "Discuss options to make chips"
 > > ~~~
 > > {: .language-bash}
 > > ~~~
 > > [master cc127c2]
-> >  Write plans to start a base on Venus
+> >  Discuss options to make chips
 > >  2 files changed, 2 insertions(+)
-> >  create mode 100644 venus.txt
+> >  create mode 100644 chips.txt
 > > ~~~
 > > {: .output}
 > {: .solution}
@@ -737,7 +736,7 @@ repository (`git commit`):
 >
 > > ## Solution
 > >
-> > If needed, move out of the `planets` folder:
+> > If needed, move out of the `recipes` folder:
 > >
 > > ~~~
 > > $ cd ..
