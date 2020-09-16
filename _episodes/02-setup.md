@@ -21,15 +21,15 @@ of configurations we will set as we get started with Git:
 
 On a command line, Git commands are written as `git verb options`,
 where `verb` is what we actually want to do and `options` is additional optional information which may be needed for the `verb`. So here is how
-Dracula sets up his new laptop:
+the chef sets up their new laptop:
 
 ~~~
-$ git config --global user.name "Vlad Dracula"
-$ git config --global user.email "vlad@tran.sylvan.ia"
+$ git config --global user.name "J. Smith"
+$ git config --global user.email "jsmith@gallifrey.io"
 ~~~
 {: .language-bash}
 
-Please use your own name and email address instead of Dracula's. This user name and email will be associated with your subsequent Git activity,
+Please use your own name and email address instead of J. Smith's. This user name and email will be associated with your subsequent Git activity,
 which means that any changes pushed to
 [GitHub](https://github.com/),
 [BitBucket](https://bitbucket.org/),
@@ -77,7 +77,7 @@ For these lessons, we will be interacting with [GitHub](https://github.com/) and
 > 
 
 
-Dracula also has to set his favorite text editor, following this table:
+The chef also has to set their favorite text editor, following this table:
 
 | Editor             | Configuration command                            |
 |:-------------------|:-------------------------------------------------|
