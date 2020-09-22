@@ -40,11 +40,11 @@ Next, the Collaborator needs to download a copy of the Owner's repository to her
 her `Desktop` folder, the Collaborator enters:
 
 ~~~
-$ git clone https://github.com/vlad/planets.git ~/Desktop/vlad-planets
+$ git clone https://github.com/jsmith/recipes.git ~/Desktop/jsmith-recipes
 ~~~
 {: .language-bash}
 
-Replace 'vlad' with the Owner's username.
+Replace 'jsmith' with the Owner's username.
 
 ![After Creating Clone of Repository](../fig/github-collaboration.svg)
 
@@ -52,26 +52,26 @@ The Collaborator can now make a change in her clone of the Owner's repository,
 exactly the same way as we've been doing before:
 
 ~~~
-$ cd ~/Desktop/vlad-planets
-$ nano pluto.txt
-$ cat pluto.txt
+$ cd ~/Desktop/jsmith-recipes
+$ nano salsa.txt
+$ cat salsa.txt
 ~~~
 {: .language-bash}
 
 ~~~
-It is so a planet!
+Some people don’t like avocados. Perhaps they’d prefer salsa.
 ~~~
 {: .output}
 
 ~~~
-$ git add pluto.txt
-$ git commit -m "Add notes about Pluto"
+$ git add salsa.txt
+$ git commit -m "Start salsa recipe and notes"
 ~~~
 {: .language-bash}
 
 ~~~
  1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt
+ create mode 100644 salsa.txt
 ~~~
 {: .output}
 
@@ -89,7 +89,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 306 bytes, done.
 Total 3 (delta 0), reused 0 (delta 0)
-To https://github.com/vlad/planets.git
+To https://github.com/jsmith/recipes.git
    9272da5..29aba7c  master -> master
 ~~~
 {: .output}
@@ -147,14 +147,14 @@ remote: Counting objects: 100% (4/4), done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), done.
-From https://github.com/vlad/planets
+From https://github.com/jsmith/recipes
  * branch            master     -> FETCH_HEAD
    9272da5..29aba7c  master     -> origin/master
 Updating 9272da5..29aba7c
 Fast-forward
- pluto.txt | 1 +
+ salsa.txt | 1 +
  1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt
+ create mode 100644 salsa.txt
 ~~~
 {: .output}
 
